@@ -31,9 +31,9 @@ def movie_recommender(movie = "Natural Born Killers"):
 
     return {"similar_movie": "Reservoir Dogs"}
 
-@app.get("/test")
-def test(param):
-    # model = joblib.load('modeljoblib')
-    # pred = model.predict(image)
+# @app.get("/test")
+# def test(param):
+#     # model = joblib.load('modeljoblib')
+#     # pred = model.predict(image)
 
-    return {"Status": "OK"}
+#     return {"Status": "OK"}
