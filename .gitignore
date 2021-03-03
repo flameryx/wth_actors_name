@@ -5,3 +5,7 @@
 raw_data/
 **/__pycache__/
 .env
+.python-version
+notebooks/crop.jpg
+notebooks/exploring image preprocessing.ipynb
+notebooks/image preprocessing to dictionary for multiple actors.ipynb
