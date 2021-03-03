@@ -7,7 +7,7 @@ num_pages = input("Enter number of pages: ")
 
 saved_actor_names = []
 
-with open("actors_list.txt", "r") as f:
+with open("../../data/actor_names_list.txt", "r") as f:
     saved_actor_names = f.read().splitlines()
 
 
@@ -27,7 +27,7 @@ for i in range(int(num_pages)):
 
 new_actor_names = []
 new_actor_counter = 0
-with open("actors_list.txt", "a") as f:
+with open("../../data/actor_names_list.txt", "a") as f:
     for actor in actor_names:
         if actor not in saved_actor_names:
             f.write(actor + "\n")
