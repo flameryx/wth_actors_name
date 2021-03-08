@@ -37,7 +37,7 @@ def movie_recommender(movie = "Natural Born Killers"):
 
     recommendations = recommend_movies(ohe_df, movie)
 
-    return {recommendaitons}
+    return {recommendations}
 
 
 # @app.get("/test")
