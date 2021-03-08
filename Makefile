@@ -66,3 +66,26 @@ pypi:
 
 run_api:
 	uvicorn api.fast:app --reload
+
+###Google Storage###
+
+BUCKET_NAME=test_bucket_wth_actors_name
+
+# path of the file to upload to gcp (the path of the file should be absolute or should match the directory where the make command is run)
+LOCAL_PATH=/home/antoniosf/100act2 # Replace with your local path to the `train_1k.csv` and make sure to put it between quotes
+
+# bucket directory in which to store the uploaded file (we choose to name this data as a convention)
+BUCKET_FOLDER=test_data
+
+# name for the uploaded file inside the bucket folder (here we choose to keep the name of the uploaded file)
+BUCKET_FILE_NAME=origin_color
+#BUCKET_FILE_NAME=$(shell basename ${LOCAL_PATH})
+
+DEST =100act
+
+upload_data:
+# 	echo ${LOCAL_PATH}
+# 	echo gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
+# @gsutil cp train_1k.csv gs://wagon-ml-my-bucket-name/data/train_1k.csv
+	@gsutil -m cp -r ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}/${DEST}
+
