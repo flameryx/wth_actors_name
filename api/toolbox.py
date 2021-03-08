@@ -19,13 +19,11 @@ def get_movie_names_list():
 
 
 def get_ohe_movie_scaled():
-    with open("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/ohe_movie_scaled.csv") as f:
-        return f.read().splitlines()
+    return pd.read_csv("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/ohe_movie_scaled.csv").drop(columns="Unnamed: 0")
 
 
 def get_ohe_movie():
-    with open("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/ohe_movie.csv") as f:
-        return f.read().splitlines()
+    return pd.read_csv("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/ohe_movie.csv").drop(columns="Unnamed: 0")
 
 
 def print_recommendations_verbose(df, model, input_movie, amount):
