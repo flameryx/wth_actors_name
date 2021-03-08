@@ -81,11 +81,9 @@ BUCKET_FOLDER=test_data
 BUCKET_FILE_NAME=origin_color
 #BUCKET_FILE_NAME=$(shell basename ${LOCAL_PATH})
 
-DEST =100act
-
 upload_data:
 # 	echo ${LOCAL_PATH}
 # 	echo gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
 # @gsutil cp train_1k.csv gs://wagon-ml-my-bucket-name/data/train_1k.csv
-	@gsutil -m cp -r ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}/${DEST}
+	@gsutil -m cp -r ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
 
