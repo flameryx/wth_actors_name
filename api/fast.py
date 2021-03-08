@@ -1,5 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import toolbox as tb
+from recommender_function import recommend_movies
+import pandas as pd
+
+# Load ohe_df data
+ohe_df = pd.read_csv("../wth_actors_name/data/ohe_movie_scaled.csv")
 
 app = FastAPI()
 
@@ -29,7 +35,10 @@ def movie_recommender(movie = "Natural Born Killers"):
     # model = joblib.load('modeljoblib')
     # pred = model.predict(image)
 
-    return {"similar_movie": "Reservoir Dogs"}
+    recommendations = recommend_movies(ohe_df, movie)
+
+    return {recommendaitons}
+
 
 # @app.get("/test")
 # def test(param):
