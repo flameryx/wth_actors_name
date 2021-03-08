@@ -34,7 +34,6 @@ def recommend_movies(ohe_df = None, movie_name = None):
 
 
     first_filter = pd.DataFrame()
-
     for movie in chosen_ones:
         
         first_filter = first_filter.append(ohe_df.loc[[movie]])
@@ -52,25 +51,24 @@ def recommend_movies(ohe_df = None, movie_name = None):
     model_2.fit(X_2)
 
 
-    distance, index = model_2.kneighbors(X_2.loc[[movie_index]], X_2.shape[0])
+    distance, index = model_2.kneighbors(X_2.loc[[movie_index]], 11)
 
     distance = distance.tolist()[0]
     index = index.tolist()[0]
 
+    recommendations = []
+ 
+    for i in index:
+        title = df_2.loc[i]["primaryTitle"]
+        recommendations.append(title)
 
-    chosen_ones = []
-    last_dist = distance[30]
-
-    for i, dist in enumerate(distance):
-        
-        if dist > last_dist: break
-        chosen_ones.append(index[i])
-
-
-    tb.print_recommendations_names(df_2, model_2, X_2.loc[[movie_index]], 11)
+    return recommendations[1:]
         
 
 
 if __name__ == "__main__":
 
-    recommend_movies()
+    movies = recommend_movies()
+
+    for mov in movies:
+        print(mov)
