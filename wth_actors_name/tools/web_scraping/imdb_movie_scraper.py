@@ -11,6 +11,8 @@ movies_id_list = list(movies_df["tconst"])
 ids_dict = {}
 movie_counter = 0
 
+print("SCRAPING ADDITIONAL MOVIE DATA")
+
 for movie_id in movies_id_list:
     
     inner_dict = {}
@@ -60,7 +62,7 @@ for movie_id in movies_id_list:
     inner_dict["awards"] = awards_blurb
     #print(awards_blurb)
 
-    # Budget Scraper
+    # Other data scraper
     for block in soup.find_all("div", class_="txt-block"):
 
         h4 = block.find("h4", class_="inline")
@@ -87,18 +89,19 @@ for movie_id in movies_id_list:
                 inner_dict["worldwideGross"] = ww_gross
                 
     ids_dict[movie_id] = inner_dict
-
-
-    # Country scraper
     
     movie_counter += 1
     print(movie_counter, end="  ", flush=True)
 
+print()
+print("FINISHED SCRAPING")
+print()
+
 
 new_df = pd.DataFrame.from_dict(ids_dict, orient="index")
 
-movies_df.drop(columns=["actors", "awards", "country", "language", "budget", "worldwideGross"], inplace=True)
 
 main_movies = movies_df.set_index("tconst").join(new_df, on="tconst", how="left")
 
-main_movies.to_csv("../../data/main_movies.csv")
+
+main_movies.to_csv("../data_preparation/new_movies_scraped.csv")
