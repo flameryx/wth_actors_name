@@ -5,7 +5,9 @@
 raw_data/
 **/__pycache__/
 .env
-.python-version
+wth-actors-name
 notebooks/crop.jpg
 notebooks/exploring image preprocessing.ipynb
 notebooks/image preprocessing to dictionary for multiple actors.ipynb
+
+cnn_final_model_3
