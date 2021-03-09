@@ -19,7 +19,7 @@ def find_my_movies(movie_ids_list, df):
 
 
 
-merged_data = pd.read_csv("merged_basics.csv")
+merged_data = pd.read_csv("merged_basics.csv").drop(columns="Unnamed: 0")
 movie_ids_list = list(merged_data["tconst"])
 
 

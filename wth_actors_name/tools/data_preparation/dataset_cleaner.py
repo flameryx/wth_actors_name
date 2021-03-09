@@ -174,8 +174,55 @@ dirty_csv["goldenGlobesNom"] = gg_noms_list
 dirty_csv["totalWins"] = n_wins_list
 dirty_csv["totalNoms"] = n_noms_list
 
+
+movies_df = pd.read_csv("../../data/main_movie.csv").drop(columns=["Unnamed: 0"])
+
+movies_df = movies_df.append(dirty_csv)
+
+
+movies_df.drop(columns=["titleType","originalTitle", "isAdult", "endYear"], inplace=True)
+
+
+# Dealing with NaN values
+movies_df = movies_df[movies_df["numVotes"].notnull()]
+movies_df = movies_df[movies_df["runtimeMinutes"] != "\\N"]
+movies_df["totalNoms"] = movies_df["totalNoms"].fillna(0)
+movies_df[["totalNoms"]] = movies_df[["totalNoms"]].replace(to_replace="", value="0")
+
+# Converting to int or float dtypes
+movies_df["numVotes"] = movies_df["numVotes"].astype(int)
+
+movies_df["runtimeMinutes"] = movies_df["runtimeMinutes"].astype(int)
+
+movies_df["totalNoms"] = movies_df["totalNoms"].astype(int)
+
+
+wwg_list = list(movies_df["worldwideGross"])
+
+for i, gross in enumerate(wwg_list):
+    
+    if type(gross) == int: continue
+
+    elif type(gross) != float:
+        wwg_list[i] = int(gross.replace("$", "").replace(",", ""))
+        
+movies_df["worldwideGross"] = wwg_list
+
+wwg_median = movies_df["worldwideGross"].median()
+
+movies_df["worldwideGross"].fillna(wwg_median, inplace=True)
+
+movies_df["worldwideGross"] = movies_df["worldwideGross"].astype(int)
+
+movies_df.reset_index(inplace=True)
+movies_df.drop(columns="index", inplace=True)
+
 print()
 print("FINISHED CLEANING")
+print()
 
-dirty_csv.to_csv("new_movies_clean.csv")
 
+movies_df.drop_duplicates(inplace=True)
+
+movies_df.to_csv("../../data/main_movie.csv")
+movies_df.to_csv("new_movies_clean.csv")
