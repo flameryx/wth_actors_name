@@ -8,13 +8,16 @@ def recommend_movies(ohe_df = None, movie_name = None):
     if movie_name == None:
         movie_name = input("Enter a movie title: ")
 
-    if ohe_df == None:
-        ohe_df = tb.get_ohe_movie_scaled()
+    #if ohe_df == None:
+    #    ohe_df = tb.get_ohe_movie_scaled()
 
     df_1 = tb.select_features(ohe_df, ["genres", "directors", "countries"])
     X_1 = df_1.drop(columns=["tconst", "primaryTitle"])
 
     movie_index = tb.get_movie_index(df_1, movie_name)
+
+    if movie_index == None:
+        return None
 
     model_1 = NearestNeighbors()
     model_1.fit(X_1)

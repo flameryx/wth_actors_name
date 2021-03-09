@@ -17,6 +17,13 @@ def get_movie_names_list():
     with open("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/movie_names.txt", "r") as f:
         return f.read().splitlines()
 
+def get_movie_names_not_found():
+    with open("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/movie_names_not_found.txt", "r") as f:
+        return f.read().splitlines()
+
+def get_main_movie_csv():
+        return pd.read_csv("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/main_movie.csv").drop(columns="Unnamed: 0")
+
 
 def get_ohe_movie_scaled():
     return pd.read_csv("/home/flameryx/code/flameryx/wth_actors_name/wth_actors_name/data/ohe_movie_scaled.csv").drop(columns="Unnamed: 0")
@@ -61,8 +68,13 @@ def get_movie_id(movieName):
 
 
 def get_movie_index(df, movieName):
+
+    movie = df[df["primaryTitle"] == movieName]
+
+    if len(movie) == 0:
+        return None
     
-    return df[df["primaryTitle"] == movieName].index[0]
+    return movie.index[0]
 
 
 """

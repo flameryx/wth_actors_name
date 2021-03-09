@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import toolbox as tb
-from recommender_function import recommend_movies
+import recommender_function as rf
 import pandas as pd
 
 # Load ohe_df data
-ohe_df = pd.read_csv("../wth_actors_name/data/ohe_movie_scaled.csv")
+ohe_df = pd.read_csv("wth_actors_name/data/ohe_movie_scaled.csv")
 
 app = FastAPI()
 
@@ -27,17 +27,30 @@ def find_actor_by_pic(url = "https://ca-times.brightspotcdn.com/dims4/default/2a
     # image = Image.open(url)
     # model = joblib.load('modeljoblib')
     # pred = model.predict(image)
+
+    
     return {"actor": "Woody Harrelson"}
 
 
 @app.get("/movie_recommender")
-def movie_recommender(movie = "Natural Born Killers"):
+def movie_recommender(movie = "Iron Man"):
     # model = joblib.load('modeljoblib')
     # pred = model.predict(image)
 
-    recommendations = recommend_movies(ohe_df, movie)
+    recommendations = rf.recommend_movies(ohe_df, movie)
 
-    return {recommendations}
+    if recommendations == None:
+        return {"ERROR" : "This movie is not in the database. Cannot make recommendations."}
+
+    counter = 1
+
+    movie_dict = {}
+
+    for rec in recommendations:
+        movie_dict[counter] = rec
+        counter += 1
+
+    return movie_dict
 
 
 # @app.get("/test")
