@@ -27,6 +27,8 @@ def find_actor_by_pic(url = "https://ca-times.brightspotcdn.com/dims4/default/2a
     # image = Image.open(url)
     # model = joblib.load('modeljoblib')
     # pred = model.predict(image)
+
+    
     return {"actor": "Woody Harrelson"}
 
 
