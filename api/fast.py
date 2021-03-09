@@ -3,10 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import toolbox as tb
 import recommender_function as rf
 import pandas as pd
+import predict_actor as pa
+import tensorflow as tf
+
+#load actor recognition model
+model = tf.keras.models.load_model("cnn_final_model_3")
 
 # Load ohe_df data
 ohe_df = pd.read_csv("wth_actors_name/data/ohe_movie_scaled.csv")
-
 app = FastAPI()
 
 app.add_middleware(
@@ -22,14 +26,11 @@ def index():
     return {"actor": "Woody Harrelson"}
 
 @app.get("/find_actor_by_pic")
-def find_actor_by_pic(url = "https://ca-times.brightspotcdn.com/dims4/default/2a094f0/2147483647/strip/true/crop/311x512+0+0/resize/840x1383!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fe4%2Fad%2F8a7dabb97bf844d7684968f611e5%2Fsdut-in-this-april-27-2007-file-ph-20160828"
-):
-    # image = Image.open(url)
-    # model = joblib.load('modeljoblib')
-    # pred = model.predict(image)
+def find_actor_by_pic(url = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Adele_2016.jpg"):
 
-    
-    return {"actor": "Woody Harrelson"}
+    image = pa.preprocess(url)
+
+    return {"actor": pa.predict(model,image)}
 
 
 @app.get("/movie_recommender")
