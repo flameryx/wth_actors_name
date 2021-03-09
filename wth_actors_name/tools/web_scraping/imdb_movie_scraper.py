@@ -3,7 +3,8 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import requests
 
-movies_df = pd.read_csv("../../data/main_movie.csv")
+movies_df = pd.read_csv("../../data/new_movies_data.csv")
+#movies_df = pd.read_csv("../../data/main_movie.csv")
 
 movies_id_list = list(movies_df["tconst"])
 
@@ -19,7 +20,7 @@ for movie_id in movies_id_list:
 
     response = requests.get(url, headers=headers)
     
-    while(reponse.status_code != 200):
+    while(response.status_code != 200):
         response = requests.get(url, headers=headers)
     
     soup = BeautifulSoup(response.text, "html.parser")
