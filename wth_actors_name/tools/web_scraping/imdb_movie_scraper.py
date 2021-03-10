@@ -3,8 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import requests
 
-movies_df = pd.read_csv("../../data/new_movies_data.csv")
-#movies_df = pd.read_csv("../../data/main_movie.csv")
+movies_df = pd.read_csv("../merging/new_movies_data.csv").drop(columns="Unnamed: 0")
 
 movies_id_list = list(movies_df["tconst"])
 

@@ -9,7 +9,9 @@ def recommend_movies(ohe_df = None, movie_name = None):
         movie_name = input("Enter a movie title: ")
 
     if ohe_df == None:
-        ohe_df = tb.get_ohe_movie_scaled()
+        ohe_df = tb.get_movies_ohe_scaled()
+
+    movies_main_df = tb.get_main_movie_csv()
 
     df_1 = tb.select_features(ohe_df, ["genres", "directors", "countries"])
     X_1 = df_1.drop(columns=["tconst", "primaryTitle"])
@@ -59,8 +61,14 @@ def recommend_movies(ohe_df = None, movie_name = None):
     recommendations = []
  
     for i in index:
+        tconst = df_2.loc[i]["tconst"]
         title = df_2.loc[i]["primaryTitle"]
-        recommendations.append(title)
+
+        year = list(movies_main_df[movies_main_df["tconst"] == tconst]["startYear"])[0]
+
+        string = f"{title} ({year})"
+
+        recommendations.append(string)
 
     return recommendations[1:]
         

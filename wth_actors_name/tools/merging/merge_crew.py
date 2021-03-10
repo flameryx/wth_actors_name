@@ -34,4 +34,4 @@ print()
 
 
 # Save dataframe in csv file
-merged_data.to_csv("../../data/new_movies_data.csv")
+merged_data.to_csv("new_movies_data.csv")
