@@ -159,6 +159,11 @@ for i, row in enumerate(awards):
                 else:
                     n_noms = row[1][wins_i + len("win"):noms_i]
     
+
+
+    if n_noms == "Nominated1BAFTAFilmAwar":
+        n_noms = "0"
+
     n_wins_list.append(n_wins)
     n_noms_list.append(n_noms)
     oscar_wins_list.append(oscar_wins)
