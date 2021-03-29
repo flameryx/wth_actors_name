@@ -42,7 +42,7 @@ For the **communication with the Web Development team** we used:
 
 ___
 
-**A simple visualization of the project** (*part of the project presentation to general audience*):
+**A simple visualization of the technologies used in this project** (*part of the project presentation to general audience*):
 
 ![alt text](https://i.ibb.co/w69Ps1Y/Screenshot-from-2021-03-29-11-38-32.png "KNN")
 
