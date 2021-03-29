@@ -10,9 +10,11 @@ However, this is the repository of the Data Science team. The repository of the 
 
 ## Features
 
-:camera: :camera_flash: **Image Recognition**: The user takes and uploads a picture of an actor and the app returns the name and a short bio of them!
+:camera: :camera_flash: **Image Recognition**&ast;: The user takes and uploads a picture of an actor and the app returns the name and a short bio of them!
 
-:movie_camera: :clapper: **Movie Recommendation**: The user inputs a movie and the app returns three other movies recommendation!
+:movie_camera: :clapper: **Movie Recommendation**&ast;: The user inputs a movie and the app returns three other movies recommendation!
+
+*&ast; at the moment the models are trained on about 1300 movies and 100 actors and hopefully in the near future more movies and actors will be added*
 
 ## Technologies&Tools
 
