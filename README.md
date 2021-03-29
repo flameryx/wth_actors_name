@@ -4,15 +4,23 @@ A [web app](https://wth-actor-name.herokuapp.com/) for every cinema lover! :hear
 
 ## About
 
-This app is a collaboration of a Data Science and Web Development team as the final project of the [Le Wagon Data Science bootcamp](https://www.lewagon.com/data-science-course/full-time) and [Le Wagon Web Development bootcamp](https://www.lewagon.com/web-development-course/full-time) programs and was completed in less than 10 days
+This app is a collaboration of a Data Science and a Web Development team as their final project of the [Le Wagon Data Science bootcamp](https://www.lewagon.com/data-science-course/full-time) and [Le Wagon Web Development bootcamp](https://www.lewagon.com/web-development-course/full-time) programs and was completed in less than 10 days.
 
-However, this is the repository of the Data Science team. The repository of the Web Development team can be found [here](https://github.com/MargauxPalvini/what-the-hell).
+This web app aims to help the user find out the name of the actor who played in a movie they watched.
 
-## Features
+* The user inputs the name of a movie, and the app returns the main cast. If the actor is not there, the user can input a second movie where the actor they are looking for has played. Then the app returns the actor and a short bio.
+
+* The user can also take a picture of the actor and upload it, and the app returns the name and again a short bio!
+
+* Every time a movie is searched, the web app also recommends three similar movies!
+
+This is the repository of the Data Science team. The repository of the Web Development team can be found [here](https://github.com/MargauxPalvini/what-the-hell).
+
+## Data Science Features
 
 :camera: :camera_flash: **Image Recognition**&ast;: The user takes and uploads a picture of an actor and the app returns the name and a short bio of them!
 
-:movie_camera: :clapper: **Movie Recommendation**&ast;: The user inputs a movie and the app returns three other movies recommendation!
+:movie_camera: :clapper: **Movie Recommendation**&ast;: Whenever the user inputs a movie, the app returns three similar movies recommendation!
 
 *&ast; at the moment the models are trained on about 1300 movies and 100 actors and hopefully in the near future more movies and actors will be added*
 
