@@ -1,74 +1,54 @@
-# Data analysis
-- Document here the project: wth_actors_name
-- Description: Project Description
-- Data Source:
-- Type of analysis:
+# What is this actors name? 🤔
 
-Please document the project the better you can.
+A [web app](https://wth-actor-name.herokuapp.com/) for every cinema lover! :heart:
 
-# Startup the project
+## About
 
-The initial setup.
+This app is a collaboration of a Data Science and Web Development team as the final project of the [Le Wagon Data Science bootcamp](https://www.lewagon.com/data-science-course/full-time) and [Le Wagon Web Development bootcamp](https://www.lewagon.com/web-development-course/full-time) programs and was completed in less than 10 days
 
-Create virtualenv and install the project:
-```bash
-sudo apt-get install virtualenv python-pip python-dev
-deactivate; virtualenv ~/venv ; source ~/venv/bin/activate ;\
-    pip install pip -U; pip install -r requirements.txt
-```
+However, this is the repository of the Data Science team. The repository of the Web Development team can be found [here](https://github.com/MargauxPalvini/what-the-hell).
 
-Unittest test:
-```bash
-make clean install test
-```
+## Features
 
-Check for wth_actors_name in gitlab.com/{group}.
-If your project is not set please add it:
+:camera: :camera_flash: **Image Recognition**: The user takes and uploads a picture of an actor and the app returns the name and a short bio of them!
 
-- Create a new project on `gitlab.com/{group}/wth_actors_name`
-- Then populate it:
+:movie_camera: :clapper: **Movie Recommendation**: The user inputs a movie and the app returns three other movies recommendation!
 
-```bash
-##   e.g. if group is "{group}" and project_name is "wth_actors_name"
-git remote add origin git@github.com:{group}/wth_actors_name.git
-git push -u origin master
-git push -u origin --tags
-```
+## Technologies&Tools
 
-Functionnal test with a script:
+For the **image recognition** part we used:
 
-```bash
-cd
-mkdir tmp
-cd tmp
-wth_actors_name-run
-```
+* **Cascade Classifiers** from `OpenCV` to capture the faces in the images
 
-# Install
+* **Transfer Learning** with **Densenet201** with `Keras` and `Tensorflow`. We implemented part of the pre-trained model in our custom **Convolutional Neural Network** 
 
-Go to `https://github.com/{group}/wth_actors_name` to see the project, manage issues,
-setup you ssh public key, ...
+For the **movie recommendation** part we used:
 
-Create a python3 virtualenv and activate it:
+* `Beautiful Soup` for web scraping
 
-```bash
-sudo apt-get install virtualenv python-pip python-dev
-deactivate; virtualenv -ppython3 ~/venv ; source ~/venv/bin/activate
-```
+* `Pandas` and `NumPy` for data wrangling
 
-Clone the project and install it:
+* **K-Nearest Neighbors** from `scikit-learn`
 
-```bash
-git clone git@github.com:{group}/wth_actors_name.git
-cd wth_actors_name
-pip install -r requirements.txt
-make clean install test                # install and test
-```
-Functionnal test with a script:
+For the **communication with the Web Development team** we used:
 
-```bash
-cd
-mkdir tmp
-cd tmp
-wth_actors_name-run
-```
+* `FastAPI` for building API
+
+* `Uvicorn` for ASGI server implementation
+
+* `Docker` for hosting the API
+
+* **Google Cloud Platform** for the management of the project
+
+___
+
+**A simple visualization of the project** (*part of the project presentation to general audience*):
+
+![alt text](https://i.ibb.co/w69Ps1Y/Screenshot-from-2021-03-29-11-38-32.png "KNN")
+
+![alt_text](https://i.ibb.co/C1jhC2W/Screenshot-from-2021-03-29-11-42-14.png "Cascade Classifiers")
+
+![alt_text](https://i.ibb.co/Lzjqsz6/Screenshot-from-2021-03-29-11-42-30.png "CNN")
+
+![alt_text](https://i.ibb.co/pXn7rTq/Screenshot-from-2021-03-29-11-43-13.png "Communication")
+
